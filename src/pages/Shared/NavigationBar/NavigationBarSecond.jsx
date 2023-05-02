@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthPorviders";
 
 const NavigationBarSecond = () => {
-  const user = null;
+  const {user, logOut} = useContext(AuthContext)
+
+  
+  console.log(user)
+
+
+  const handleLogOut = () => {
+    logOut()
+    .then()
+    .catch(error => {
+      console.log(error)
+    })
+  }
   return (
     <div className="navbar md:px-20 bg-[#4406CB] text-white">
       <div className="flex-1">
@@ -15,7 +28,7 @@ const NavigationBarSecond = () => {
           <div className="flex-none">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/">Hombe</Link>
               </li>
               <li>
                 <Link to="/blog">Blog</Link>
@@ -34,7 +47,7 @@ const NavigationBarSecond = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <button className="text-black font-bold">Logout</button>
+              <button onClick={handleLogOut} className="text-black font-bold">Logout</button>
             </li>
           </ul>
         </div> : <><button className="btn btn-sm"><Link to='/login'>Login</Link></button></>}

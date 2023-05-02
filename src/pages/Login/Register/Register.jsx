@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthPorviders";
 const Register = () => {
+  const [error, setError] = useState("");
+
+  const { user, createUser } = useContext(AuthContext);
+
+  console.log(user);
+
   const handleSingup = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -9,6 +16,24 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(name, imgUrl, email, password);
+
+    setError('')
+    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+      setError("Minimum eight characters, at least one letter and one number");
+    }
+
+    createUser(email, password)
+    .then(resutl => {
+        const createdUser = resutl.user
+        console.log(createdUser)
+    })
+    .catch(error => {
+        console.log(error)
+    })
+
+    event.target.reset()
+
+
   };
   return (
     <form onSubmit={handleSingup}>
@@ -30,17 +55,7 @@ const Register = () => {
                   className="input input-bordered"
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text ">Image Url</span>
-                </label>
-                <input
-                  type="text"
-                  name="imgurl"
-                  placeholder="image url"
-                  className="input input-bordered"
-                />
-              </div>
+
               <div className="form-control">
                 <label className="label">
                   <span className="label-text ">Email</span>
@@ -50,6 +65,7 @@ const Register = () => {
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -61,8 +77,27 @@ const Register = () => {
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
+                  required
                 />
               </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text ">Image Url</span>
+                </label>
+                <input
+                  type="text"
+                  name="imgurl"
+                  placeholder="image url"
+                  className="input input-bordered"
+                />
+              </div>
+
+              <p
+                className="label-text-alt  text-lg text-red-700"
+              >
+               {error}
+              </p>
               <div className="form-control mt-6">
                 <input
                   className="btn btn-primary"
@@ -75,7 +110,7 @@ const Register = () => {
                   to="/login"
                   className="label-text-alt link link-hover text-lg"
                 >
-                Already Have  An Account ?
+                  Already Have An Account ?
                 </Link>
               </label>
             </div>

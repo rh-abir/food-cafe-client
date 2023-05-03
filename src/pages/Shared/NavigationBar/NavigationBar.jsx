@@ -5,8 +5,10 @@ import { AuthContext } from "../../../providers/AuthPorviders";
 const NavigationBar = () => {
   const {user, logOut} = useContext(AuthContext)
 
+    
+  console.log(user?.displayName)
+  console.log(user?.photoURL)
   
-  console.log(user?.email)
 
 
   const handleLogOut = () => {
@@ -16,6 +18,7 @@ const NavigationBar = () => {
       console.log(error)
     })
   }
+
   return (
     <div className="navbar md:px-20 bg-gray-100 bg-opacity-10 fixed text-white">
       <div className="flex-1">
@@ -38,8 +41,8 @@ const NavigationBar = () => {
         </div>
         {user ? <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div title={user ? user?.email : ''} className="w-10 rounded-full">
-              <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            <div title={user ? user?.displayName : ''} className="w-10 rounded-full">
+              <img src={user ? user?.photoURL : "/images/stock/photo-1534528741775-53994a69daeb.jpg"} />
             </div>
           </label>
           <ul

@@ -6,7 +6,6 @@ const Register = () => {
 
   const { user, createUser, userProfileUpdate } = useContext(AuthContext);
 
-  console.log(user);
 
   const handleSingup = (event) => {
     event.preventDefault();
@@ -15,7 +14,6 @@ const Register = () => {
     const imgUrl = form.imgurl.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, imgUrl, email, password);
 
     setError('')
     if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
@@ -25,7 +23,7 @@ const Register = () => {
     createUser(email, password)
     .then(resutl => {
         const createdUser = resutl.user
-        console.log(createdUser)
+        
         userProfileUpdate(name, imgUrl)
         .then(() => {})
         .catch(error => {

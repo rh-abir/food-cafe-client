@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthPorviders";
 
 const Login = () => {
+
   const { signIn, singinWithGoogle, singinWithGithub } = useContext(AuthContext);
 
   const handleLogin = (event) => {
@@ -11,6 +12,8 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     // console.log(email, password)
+
+
 
     signIn(email, password)
       .then((result) => {
@@ -81,6 +84,7 @@ const Login = () => {
                   required
                 />
               </div>
+             
               <div className="form-control mt-6">
                 <input
                   className="btn btn-primary"

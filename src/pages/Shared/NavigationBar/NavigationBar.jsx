@@ -6,7 +6,7 @@ const NavigationBar = () => {
   const {user, logOut} = useContext(AuthContext)
 
   
-  console.log(user)
+  console.log(user?.email)
 
 
   const handleLogOut = () => {
@@ -17,7 +17,7 @@ const NavigationBar = () => {
     })
   }
   return (
-    <div className="navbar md:px-20 bg-gray-100 bg-opacity-10 fixed">
+    <div className="navbar md:px-20 bg-gray-100 bg-opacity-10 fixed text-white">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost normal-case text-xl">
           Food-Cafe
@@ -38,7 +38,7 @@ const NavigationBar = () => {
         </div>
         {user ? <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
+            <div title={user ? user?.email : ''} className="w-10 rounded-full">
               <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
             </div>
           </label>

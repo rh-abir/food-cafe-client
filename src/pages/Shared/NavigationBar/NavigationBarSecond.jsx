@@ -28,7 +28,7 @@ const NavigationBarSecond = () => {
           <div className="flex-none">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <Link to="/">Hombe</Link>
+                <Link to="/">Homb</Link>
               </li>
               <li>
                 <Link to="/blog">Blog</Link>

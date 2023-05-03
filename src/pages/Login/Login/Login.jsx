@@ -3,28 +3,50 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthPorviders";
 
 const Login = () => {
-
-  const {signIn} = useContext(AuthContext)
+  const { signIn, singinWithGoogle, singinWithGithub } = useContext(AuthContext);
 
   const handleLogin = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     // console.log(email, password)
 
     signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    event.target.reset();
+  };
+
+  const handleGoogleLogin = () => {
+    singinWithGoogle()
     .then(result => {
-      const loggedUser = result.user 
-      console.log(loggedUser)
+      const logggedUser =  result.user
+      console.log(logggedUser)
     })
     .catch(error => {
       console.log(error)
     })
-    
-    event.target.reset()
-    
-  };
+  }
+
+
+  const handleGithubLogin = () => {
+    singinWithGithub()
+    .then(result => {
+      const logggedUser =  result.user
+      console.log(logggedUser)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
 
   return (
     <form onSubmit={handleLogin}>
@@ -58,16 +80,29 @@ const Login = () => {
                   className="input input-bordered"
                   required
                 />
-                
               </div>
               <div className="form-control mt-6">
-                <input  className="btn btn-primary" type="submit" value="Login" />
+                <input
+                  className="btn btn-primary"
+                  type="submit"
+                  value="Login"
+                />
               </div>
               <label className="label">
-                  <Link to='/singup' className="label-text-alt link link-hover text-lg" >
-                    Create An Account ?
-                  </Link>
-                </label>
+                <Link
+                  to="/singup"
+                  className="label-text-alt link link-hover text-lg"
+                >
+                  Create An Account ?
+                </Link>
+              </label>
+              <div className="">
+                <img onClick={handleGoogleLogin} className="w-full cursor-pointer" src="./images/google-signin-button.png" alt="" />
+              </div>
+
+              <div className="w-[100%]">
+              <img onClick={handleGithubLogin} className="w-[100%] cursor-pointer" src="./images/github-singin-button.jpg" alt="" />
+              </div>
             </div>
           </div>
         </div>

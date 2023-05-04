@@ -5,3 +5,4 @@
 * login and singup error handling 
 * make private route 
 * error page handaleing
+* data loading spinner 

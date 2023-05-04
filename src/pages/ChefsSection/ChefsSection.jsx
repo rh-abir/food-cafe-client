@@ -3,16 +3,15 @@ import ChefsCart from './ChefsCart';
 
 const ChefsSection = () => {
 
-     
+
+    const [chefDatas, setCheData] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/alldata')
         .then(res => res.json())
         .then(data => setCheData(data))
     } ,[])
 
-    if(lodading){
-        return <progress className="progress w-56"></progress>
-    }
+    
 
     console.log(chefDatas)
     return (

@@ -1,10 +1,13 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthPorviders";
 const Register = () => {
   const [error, setError] = useState("");
 
   const { user, createUser, userProfileUpdate } = useContext(AuthContext);
+
+
+  const navigate = useNavigate()
 
 
   const handleSingup = (event) => {
@@ -23,9 +26,8 @@ const Register = () => {
     createUser(email, password)
     .then(resutl => {
         const createdUser = resutl.user
-        
         userProfileUpdate(name, imgUrl)
-        .then(() => {})
+        .then(() => {navigate('/')})
         .catch(error => {
           console.log(error)
         })
@@ -33,10 +35,6 @@ const Register = () => {
     .catch(error => {
         console.log(error)
     })
-
-
-   
-
 
     event.target.reset()
 

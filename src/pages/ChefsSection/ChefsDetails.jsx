@@ -30,7 +30,7 @@ const ChefsDetails = () => {
 
   return (
     <>
-      <div className="card card-side bg-base-100 shadow-xl">
+      <div className="card card-side bg-base-100 shadow-xl mt-10">
         <figure className="w-[50%]">
           <img className="rounded-none h-[400px]" src={picture} alt="chef" />
         </figure>

@@ -5,13 +5,20 @@ const ChefsSection = () => {
 
 
     const [chefDatas, setCheData] = useState([])
+
+    const [loadding, useLoadding] = useState(true)
+
     useEffect(() => {
-        fetch('http://localhost:5000/alldata')
+        fetch('https://food-cafe-server-site-rh-abir.vercel.app/alldata')
         .then(res => res.json())
         .then(data => setCheData(data))
+        useLoadding(false)
     } ,[])
 
-    
+
+    if(loadding){
+        return <progress className="progress w-56"></progress>
+    }
 
     console.log(chefDatas)
     return (

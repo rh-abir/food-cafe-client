@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthPorviders";
 
 const NavigationBar = () => {
@@ -31,10 +31,10 @@ const NavigationBar = () => {
           <div className="flex-none">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <Link to="/">Home</Link>
-              </li>
+                <NavLink to='/' className={({isActive}) => (isActive ? "text-red-700" : "" ) }>Home</NavLink>
+              </li> 
               <li>
-                <Link to="/blog">Blog</Link>
+                <NavLink to='/blog' className={({isActive}) => (isActive ? "text-red-700" : "" ) }>Blog</NavLink>
               </li>
             </ul>
           </div>

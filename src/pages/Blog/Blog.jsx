@@ -43,7 +43,7 @@ const Blog = () => {
           </p>
         </div>
       </div>
-      <button class="btn btn-primary">Download PDF</button>
+      <button className="btn btn-primary">Download PDF</button>
     </div>
   );
 };

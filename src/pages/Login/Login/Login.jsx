@@ -1,10 +1,19 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthPorviders";
 
 const Login = () => {
 
   const { signIn, singinWithGoogle, singinWithGithub } = useContext(AuthContext);
+
+  const navigate = useNavigate()
+
+  const locaiton = useLocation()
+  console.log('login page location',locaiton)
+
+  const from = locaiton.state?.from?.pathname || '/';
+  
+
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -19,6 +28,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate(from , {replace: true});
       })
       .catch((error) => {
         console.log(error);
@@ -32,6 +42,7 @@ const Login = () => {
     .then(result => {
       const logggedUser =  result.user
       console.log(logggedUser)
+      navigate(from , {replace: true});
     })
     .catch(error => {
       console.log(error)
@@ -44,6 +55,7 @@ const Login = () => {
     .then(result => {
       const logggedUser =  result.user
       console.log(logggedUser)
+      navigate(from , {replace: true});
     })
     .catch(error => {
       console.log(error)

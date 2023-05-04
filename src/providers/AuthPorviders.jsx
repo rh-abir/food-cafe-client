@@ -23,19 +23,24 @@ const AuthPorviders = ({ children }) => {
 
   const [reload, setReload] = useState(null);
 
+  const [loading, setLoding] = useState(true)
+
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const signIn = (email, password) => {
+    setLoding(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const singinWithGoogle = () => {
+    setLoding(true)
     return signInWithPopup(auth, googleProvider);
   };
 
   const singinWithGithub = () => {
+    setLoding(true)
     return signInWithPopup(auth, githubProvider);
   };
 
@@ -46,6 +51,7 @@ const AuthPorviders = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (loggerUser) => {
       setUser(loggerUser);
+      setLoding(false)
     });
 
     return () => {
@@ -64,6 +70,7 @@ const AuthPorviders = ({ children }) => {
 
   const authInfo = {
     user,
+    loading,
     createUser,
     signIn,
     singinWithGoogle,

@@ -3,6 +3,9 @@ import { useLoaderData } from "react-router-dom";
 import { AiFillLike } from "react-icons/ai";
 import TableData from "../Shared/TableData/TableData";
 import { Rating } from "@mui/material";
+import { ToastContainer, toast } from 'react-toastify';
+
+
 
 const ChefsDetails = () => {
   const detailsData = useLoaderData();
@@ -19,8 +22,9 @@ const ChefsDetails = () => {
   } = detailsData;
 
   const [disable, setDisable] = useState(false)
-  const handleFaviourte = () => {
+  const handleFavourite  = () => {
     setDisable(true)
+        toast("Wow so easy!");
   }
 
 
@@ -49,7 +53,7 @@ const ChefsDetails = () => {
               <Rating name="read-only" value={rating} readOnly />
             </h2>
 
-            <button class="btn btn-primary">Add Fo Fivouret</button>
+            <button onClick={handleFavourite } className="btn btn-primary" disabled = {disable}>Add Fo Favourite</button>
           </div>
         </div>
       </div>

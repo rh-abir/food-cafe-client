@@ -6,6 +6,8 @@ const Login = () => {
 
   const { signIn, singinWithGoogle, singinWithGithub } = useContext(AuthContext);
 
+  const [error, setError] = useState('')
+
   const navigate = useNavigate()
 
   const locaiton = useLocation()
@@ -24,6 +26,7 @@ const Login = () => {
 
 
 
+    setError('')
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
@@ -32,6 +35,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setError('your email and password not mach !')
       });
 
     event.target.reset();
@@ -96,7 +100,14 @@ const Login = () => {
                   required
                 />
               </div>
-             
+   
+              <label className="label">
+                <p
+                  className="label-text-alt text-red-500 text-lg"
+                >
+                  {error}
+                </p>
+              </label>
               <div className="form-control mt-6">
                 <input
                   className="btn btn-primary"

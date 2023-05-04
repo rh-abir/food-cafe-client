@@ -4,6 +4,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Login from "../pages/Login/Login/Login";
 import LoginLayout from "../layouts/LoginLayout";
 import Register from "../pages/Login/Register/Register";
+import ChefsDetails from "../pages/ChefsSection/ChefsDetails";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
       {
         path: 'singup',
         element: <Register></Register>
+      },
+      {
+        path: '/chfesdetails/:id',
+        element: <ChefsDetails></ChefsDetails>,
+        loader: ({params}) => fetch(`http://localhost:5000/alldata/${params.id}`) 
       }
 
     ]

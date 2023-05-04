@@ -20,7 +20,7 @@ const NavigationBar = () => {
   }
 
   return (
-    <div className="navbar md:px-20 bg-gray-100 bg-opacity-10 fixed text-white">
+    <div className="navbar z-10 md:px-20 bg-gray-100 bg-opacity-10 fixed text-white">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost normal-case text-xl">
           Food-Cafe

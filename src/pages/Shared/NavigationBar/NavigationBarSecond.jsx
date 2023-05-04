@@ -18,7 +18,7 @@ const NavigationBarSecond = () => {
     })
   }
   return (
-    <div className="navbar md:px-20 bg-[#4406CB] text-white">
+    <div className="navbar md:px-20 z-10 bg-[#4406CB] text-white">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost normal-case text-xl">
           Food-Cafe

@@ -1,4 +1,4 @@
-* Live site : https://food-cafe-fc1fd.web.app/
+* Live site : https://food-cafes.netlify.app/
 
 * make active nave link 
 * firebase authentication

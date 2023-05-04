@@ -4,6 +4,10 @@ import { AiFillLike } from "react-icons/ai";
 import TableData from "../Shared/TableData/TableData";
 import { Rating } from "@mui/material";
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import LazyLoad from "react-lazy-load";
+
 
 
 
@@ -24,7 +28,7 @@ const ChefsDetails = () => {
   const [disable, setDisable] = useState(false)
   const handleFavourite  = () => {
     setDisable(true)
-        toast("Wow so easy!");
+        toast("Add Favourite!");
   }
 
 
@@ -32,7 +36,7 @@ const ChefsDetails = () => {
     <>
       <div className="card card-side bg-base-100 shadow-xl mt-10">
         <figure className="w-[50%]">
-          <img className="rounded-none h-[400px]" src={picture} alt="chef" />
+          <LazyLoad threshold={0.70}><img className="rounded-none h-[400px]" src={picture} alt="chef" /></LazyLoad>
         </figure>
         <div className="card-body w-[50%]">
           <h2 className="card-title">{name}</h2>
@@ -78,6 +82,7 @@ const ChefsDetails = () => {
           </table>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

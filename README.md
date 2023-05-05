@@ -1,4 +1,4 @@
-* Live site : https://food-cafes.netlify.app/
+* Live site : https://food-cafes-recipes.web.app/
 
 * make active nave link 
 * firebase authentication
@@ -6,3 +6,5 @@
 * make private route 
 * error page handaleing
 * data loading spinner 
+* Make Download Pdf functionality
+  
